@@ -1,0 +1,6 @@
+@WarehouseService.WebApi_HostAddress = http://localhost:5285
+
+GET {{WarehouseService.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

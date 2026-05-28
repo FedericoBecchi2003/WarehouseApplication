@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="PaymentService.Business/PaymentService.Business.csproj" />
+  <Project Path="PaymentService.ClientHttp/PaymentService.ClientHttp.csproj" />
+  <Project Path="PaymentService.Repository/PaymentService.Repository.csproj" />
+  <Project Path="PaymentService.Shared/PaymentService.Shared.csproj" />
+  <Project Path="PaymentService.WebApi/PaymentService.WebApi.csproj" />
+</Solution>

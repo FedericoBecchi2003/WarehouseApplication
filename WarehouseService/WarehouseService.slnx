@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="WarehouseService.Business/WarehouseService.Business.csproj" />
+  <Project Path="WarehouseService.ClientHttp/WarehouseService.ClientHttp.csproj" />
+  <Project Path="WarehouseService.Repository/WarehouseService.Repository.csproj" />
+  <Project Path="WarehouseService.Shared/WarehouseService.Shared.csproj" />
+  <Project Path="WarehouseService.WebApi/WarehouseService.WebApi.csproj" />
+</Solution>
