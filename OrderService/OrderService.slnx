@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="OrderService.Business/OrderService.Business.csproj" />
+  <Project Path="OrderService.ClientHttp/OrderService.ClientHttp.csproj" />
+  <Project Path="OrderService.Repository/OrderService.Repository.csproj" />
+  <Project Path="OrderService.Shared/OrderService.Shared.csproj" />
+  <Project Path="OrderService.WebApi/OrderService.WebApi.csproj" />
+</Solution>

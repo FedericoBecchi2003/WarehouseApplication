@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "OTpRbqpjRUo=",
+  "success": true,
+  "projectFilePath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj",
+  "expectedPackageFiles": [
+    "/Users/federicobecchi/.nuget/packages/microsoft.aspnetcore.openapi/10.0.2/microsoft.aspnetcore.openapi.10.0.2.nupkg.sha512",
+    "/Users/federicobecchi/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
