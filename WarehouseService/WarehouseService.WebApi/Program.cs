@@ -1,41 +1,65 @@
+using Microsoft.EntityFrameworkCore;
+using OrderService.Business;
+using OrderService.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+// ============================================================
+// 1. CONFIGURAZIONE DATABASE (PostgreSQL)
+// ============================================================
+// Legge la stringa di connessione dal file appsettings.json o dalle variabili d'ambiente di Docker
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+builder.Services.AddDbContext<OrderDbContext>(options =>
+    options.UseNpgsql(connectionString));
+
+// ============================================================
+// 2. DEPENDENCY INJECTION (Registrazione Servizi)
+// ============================================================
+// Diciamo a .NET quale classe usare quando qualcuno chiede un IOrderService
+builder.Services.AddScoped<IOrderService, OrderService>();
+
+// (Spazio per il futuro: qui aggiungeremo il client HTTP per WarehouseService)
+// es. builder.Services.AddWarehouseClient(builder.Configuration["Urls:WarehouseApi"]);
+
+// ============================================================
+// 3. CONFIGURAZIONE API E SWAGGER
+// ============================================================
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// ============================================================
+// 4. AUTOMATISMO MIGRATIONS (La Magia)
+// ============================================================
+using (var scope = app.Services.CreateScope())
 {
-    app.MapOpenApi();
+    var services = scope.ServiceProvider;
+    try
+    {
+        var context = services.GetRequiredService<OrderDbContext>();
+        Console.WriteLine("⏳ Verificando il database PostgreSQL...");
+        
+        // Questo comando applica tutte le migrations pendenti. Se il DB non c'è, lo crea.
+        context.Database.Migrate(); 
+        
+        Console.WriteLine("✅ ROOOAAR! 🦁 Database connesso, tabelle create e aggiornate con successo!");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"❌ Errore fatale di connessione al database: {ex.Message}");
+    }
 }
 
-app.UseHttpsRedirection();
+// ============================================================
+// 5. PIPELINE HTTP
+// ============================================================
+// Espone Swagger sempre, comodissimo per testare l'esame anche su Docker
+app.UseSwagger();
+app.UseSwaggerUI();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast");
+app.UseAuthorization();
+app.MapControllers();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}

@@ -4,6 +4,10 @@
     <ProjectReference Include="..\OrderService.Shared\OrderService.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Refit.HttpClientFactory" Version="10.1.6" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

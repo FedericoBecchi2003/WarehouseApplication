@@ -36,6 +36,43 @@
             "related": ".pdb;.xml"
           }
         }
+      },
+      "PaymentService.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "PaymentService.Repository": "1.0.0",
+          "PaymentService.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PaymentService.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentService.Business.dll": {}
+        }
+      },
+      "PaymentService.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "PaymentService.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PaymentService.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentService.Repository.dll": {}
+        }
+      },
+      "PaymentService.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/PaymentService.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentService.Shared.dll": {}
+        }
       }
     }
   },
@@ -75,11 +112,29 @@
         "microsoft.openapi.2.0.0.nupkg.sha512",
         "microsoft.openapi.nuspec"
       ]
+    },
+    "PaymentService.Business/1.0.0": {
+      "type": "project",
+      "path": "../PaymentService.Business/PaymentService.Business.csproj",
+      "msbuildProject": "../PaymentService.Business/PaymentService.Business.csproj"
+    },
+    "PaymentService.Repository/1.0.0": {
+      "type": "project",
+      "path": "../PaymentService.Repository/PaymentService.Repository.csproj",
+      "msbuildProject": "../PaymentService.Repository/PaymentService.Repository.csproj"
+    },
+    "PaymentService.Shared/1.0.0": {
+      "type": "project",
+      "path": "../PaymentService.Shared/PaymentService.Shared.csproj",
+      "msbuildProject": "../PaymentService.Shared/PaymentService.Shared.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net10.0": [
-      "Microsoft.AspNetCore.OpenApi >= 10.0.2"
+      "Microsoft.AspNetCore.OpenApi >= 10.0.2",
+      "PaymentService.Business >= 1.0.0",
+      "PaymentService.Repository >= 1.0.0",
+      "PaymentService.Shared >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -88,25 +143,37 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj",
+      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj",
       "projectName": "PaymentService.WebApi",
-      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj",
+      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj",
       "packagesPath": "/Users/federicobecchi/.nuget/packages/",
-      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.WebApi/obj/",
+      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.WebApi/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
         "/Users/federicobecchi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/IL_TUO_USERNAME_GITHUB/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/PaymentService.Business.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/PaymentService.Business.csproj"
+            },
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Repository/PaymentService.Repository.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Repository/PaymentService.Repository.csproj"
+            },
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

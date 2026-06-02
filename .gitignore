@@ -1,4 +1,5 @@
 .idea/*
 nuget.config
-**/bin/
-**/obj/
+**/bin/*
+**/obj/*
+*.env
