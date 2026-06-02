@@ -946,14 +946,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Business/OrderService.Business.csproj",
+      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Business/OrderService.Business.csproj",
       "projectName": "OrderService.Business",
-      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Business/OrderService.Business.csproj",
+      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Business/OrderService.Business.csproj",
       "packagesPath": "/Users/federicobecchi/.nuget/packages/",
-      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Business/obj/",
+      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Business/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
+        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
         "/Users/federicobecchi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
@@ -967,11 +967,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Repository/OrderService.Repository.csproj": {
-              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Repository/OrderService.Repository.csproj"
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Repository/OrderService.Repository.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Repository/OrderService.Repository.csproj"
             },
-            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Shared/OrderService.Shared.csproj": {
-              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Shared/OrderService.Shared.csproj"
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Shared/OrderService.Shared.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/OrderService/OrderService.Shared/OrderService.Shared.csproj"
             }
           }
         }

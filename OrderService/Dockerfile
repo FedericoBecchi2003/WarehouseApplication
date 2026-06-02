@@ -50,4 +50,4 @@ FROM base AS final
 WORKDIR /app
 # Copio l'output pubblicato dallo stage 'publish'
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Order.WebApi.dll"]
+ENTRYPOINT ["dotnet", "OrderService.WebApi.dll"]

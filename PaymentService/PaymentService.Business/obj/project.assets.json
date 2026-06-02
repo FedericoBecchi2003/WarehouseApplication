@@ -2298,14 +2298,14 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/PaymentService.Business.csproj",
+      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/PaymentService.Business.csproj",
       "projectName": "PaymentService.Business",
-      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/PaymentService.Business.csproj",
+      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/PaymentService.Business.csproj",
       "packagesPath": "/Users/federicobecchi/.nuget/packages/",
-      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/obj/",
+      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Business/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
+        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
         "/Users/federicobecchi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
@@ -2319,11 +2319,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Repository/PaymentService.Repository.csproj": {
-              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Repository/PaymentService.Repository.csproj"
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Repository/PaymentService.Repository.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Repository/PaymentService.Repository.csproj"
             },
-            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj": {
-              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj"
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj"
             }
           }
         }
