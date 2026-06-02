@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using OrderService.Business;
-using OrderService.Repository;
+using WarehouseService.Business;
+using WarehouseService.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,16 +9,16 @@ var builder = WebApplication.CreateBuilder(args);
 // ============================================================
 // Legge la stringa di connessione dal file appsettings.json o dalle variabili d'ambiente di Docker
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-builder.Services.AddDbContext<OrderDbContext>(options =>
+builder.Services.AddDbContext<WarehouseDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 // ============================================================
 // 2. DEPENDENCY INJECTION (Registrazione Servizi)
 // ============================================================
-// Diciamo a .NET quale classe usare quando qualcuno chiede un IOrderService
-builder.Services.AddScoped<IOrderService, OrderService>();
+// Diciamo a .NET quale classe usare quando qualcuno chiede un IWarehouseService
+builder.Services.AddScoped<IWarehouseService, WarehouseService.Business.WarehouseService>();
 
-// (Spazio per il futuro: qui aggiungeremo il client HTTP per WarehouseService)
+// (Spazio per il futuro: qui aggiungeremo il client HTTP per altri servizi)
 // es. builder.Services.AddWarehouseClient(builder.Configuration["Urls:WarehouseApi"]);
 
 // ============================================================
@@ -38,7 +38,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     try
     {
-        var context = services.GetRequiredService<OrderDbContext>();
+        var context = services.GetRequiredService<WarehouseDbContext>();
         Console.WriteLine("⏳ Verificando il database PostgreSQL...");
         
         // Questo comando applica tutte le migrations pendenti. Se il DB non c'è, lo crea.

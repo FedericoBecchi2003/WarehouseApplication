@@ -1,0 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+
+namespace PaymentService.Repository;
+
+public class PaymentDbContext : DbContext
+{
+    public PaymentDbContext(DbContextOptions<PaymentDbContext> options) : base(options)
+    {
+    }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+    }
+}

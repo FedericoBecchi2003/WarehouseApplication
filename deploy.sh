@@ -48,7 +48,7 @@ check_prerequisites() {
         print_success "Docker installed"
     fi
     
-    if ! command -v docker-compose &> /dev/null; then
+    if ! command -v docker compose &> /dev/null; then
         print_error "Docker Compose not found"
         missing=1
     else
@@ -65,57 +65,46 @@ check_prerequisites() {
 setup_env() {
     print_header "Setting Up Environment"
     
-    if [ -f .env ]; then
-        print_warning ".env file already exists"
-        read -p "Do you want to overwrite it? (y/n) " -n 1 -r
-        echo
-        if [[ ! $REPLY =~ ^[Yy]$ ]]; then
-            return
-        fi
+    if [ ! -f .env ]; then
+        print_info "Creating .env from template..."
+        cp .env.example .env
+        print_success ".env file created"
+        print_warning "⚠️  Please edit .env and add your credentials:"
+        print_info "   - DOCKERHUB_USERNAME"
+        print_info "   - DOCKERHUB_TOKEN"
+        print_info "   - GITHUB_TOKEN"
+        print_warning "Then run the script again"
+        return
     fi
     
-    cp .env.example .env
-    print_success ".env file created"
+    print_success ".env file found and will be used"
     
-    read -p "Enter DockerHub username: " dockerhub_username
-    read -p "Enter DockerHub token: " dockerhub_token
-    read -p "Enter GitHub PAT token: " github_token
+    # Verify that it's not just the template
+    if grep -q "your_dockerhub_username" .env; then
+        print_error ".env still contains placeholder values!"
+        print_warning "Please edit .env and replace:"
+        print_info "   DOCKERHUB_USERNAME=your_dockerhub_username"
+        print_info "   DOCKERHUB_TOKEN=your_dockerhub_token"
+        print_info "   GITHUB_TOKEN=your_github_pat_token"
+        return
+    fi
     
-    # Update .env with user values
-    sed -i.bak "s|your_dockerhub_username|$dockerhub_username|g" .env
-    sed -i.bak "s|your_dockerhub_token|$dockerhub_token|g" .env
-    sed -i.bak "s|your_github_pat_token|$github_token|g" .env
-    
-    rm .env.bak
-    
-    print_success "Environment configured"
+    print_success "Environment ready to use"
 }
 
 # Build services
 build_services() {
     print_header "Building Services"
     
-    source .env 2>/dev/null || print_warning "Could not source .env"
+    source .env 2>/dev/null || { print_error "Could not source .env"; return 1; }
     
-    print_info "Building Order Service..."
-    docker build -f OrderService/Dockerfile \
-        --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
-        -t warehouse-order-service:local . &
-    local order_pid=$!
+    if [ -z "$GITHUB_TOKEN" ]; then
+        print_warning "⚠️  GITHUB_TOKEN non configurato in .env"
+        print_info "Per NuGet packages private, configura il token"
+    fi
     
-    print_info "Building Payment Service..."
-    docker build -f PaymentService/Dockerfile \
-        --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
-        -t warehouse-payment-service:local . &
-    local payment_pid=$!
-    
-    print_info "Building Warehouse Service..."
-    docker build -f WarehouseService/Dockerfile \
-        --build-arg GITHUB_TOKEN=${GITHUB_TOKEN} \
-        -t warehouse-warehouse-service:local . &
-    local warehouse_pid=$!
-    
-    wait $order_pid $payment_pid $warehouse_pid
+    print_info "Building with docker-compose..."
+    docker compose build
     
     print_success "All services built successfully"
 }
@@ -124,20 +113,20 @@ build_services() {
 start_services() {
     print_header "Starting Services"
     
-    docker-compose up -d
+    docker compose up -d
     
     print_success "Services started"
     print_info "Waiting for services to be ready..."
     sleep 10
     
-    docker-compose ps
+    docker compose ps
 }
 
 # Stop services
 stop_services() {
     print_header "Stopping Services"
     
-    docker-compose down
+    docker compose down
     
     print_success "Services stopped"
 }
@@ -147,9 +136,9 @@ view_logs() {
     local service=$1
     
     if [ -z "$service" ]; then
-        docker-compose logs -f
+        docker compose logs -f
     else
-        docker-compose logs -f $service
+        docker compose logs -f $service
     fi
 }
 
@@ -187,7 +176,7 @@ cleanup() {
     echo
     
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        docker-compose down -v
+        docker compose down -v
         print_success "Cleanup completed"
     else
         print_info "Cleanup cancelled"

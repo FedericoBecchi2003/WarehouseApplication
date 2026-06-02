@@ -1,4 +1,4 @@
-namespace Order.Shared;
+namespace OrderService.Shared;
 
 public class OrderCreatedEvent
 {

@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Order.Business;
-using Order.Shared;
+using OrderService.Business;
+using OrderService.Shared;
 
-namespace Order.WebApi.Controllers;
+namespace OrderService.WebApi.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]

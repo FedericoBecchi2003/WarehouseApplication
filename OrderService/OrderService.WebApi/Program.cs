@@ -16,7 +16,7 @@ builder.Services.AddDbContext<OrderDbContext>(options =>
 // 2. DEPENDENCY INJECTION (Registrazione Servizi)
 // ============================================================
 // Diciamo a .NET quale classe usare quando qualcuno chiede un IOrderService
-builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderService, OrderService.Business.OrderService>();
 
 // (Spazio per il futuro: qui aggiungeremo il client HTTP per WarehouseService)
 // es. builder.Services.AddWarehouseClient(builder.Configuration["Urls:WarehouseApi"]);

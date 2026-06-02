@@ -19,29 +19,29 @@ ENV GITHUB_TOKEN=$GITHUB_TOKEN
 COPY nuget.config .
 
 # Copio i file di progetto mantenendo la struttura delle cartelle
-COPY OrderService/Order.WebApi/Order.WebApi.csproj OrderService/Order.WebApi/
-COPY OrderService/Order.Business/Order.Business.csproj OrderService/Order.Business/
-COPY OrderService/Order.Repository/Order.Repository.csproj OrderService/Order.Repository/
-COPY OrderService/Order.Shared/Order.Shared.csproj OrderService/Order.Shared/
-COPY OrderService/Order.ClientHttp/Order.ClientHttp.csproj OrderService/Order.ClientHttp/
+COPY OrderService/OrderService.WebApi/OrderService.WebApi.csproj OrderService/OrderService.WebApi/
+COPY OrderService/OrderService.Business/OrderService.Business.csproj OrderService/OrderService.Business/
+COPY OrderService/OrderService.Repository/OrderService.Repository.csproj OrderService/OrderService.Repository/
+COPY OrderService/OrderService.Shared/OrderService.Shared.csproj OrderService/OrderService.Shared/
+COPY OrderService/OrderService.ClientHttp/OrderService.ClientHttp.csproj OrderService/OrderService.ClientHttp/
 
 # Eseguo il restore puntando al file di progetto principale
-RUN dotnet restore OrderService/Order.WebApi/Order.WebApi.csproj
+RUN dotnet restore OrderService/OrderService.WebApi/OrderService.WebApi.csproj
 
 # Copio tutto il resto del codice sorgente di OrderService
 COPY OrderService/ OrderService/
 
 # Cambio directory di lavoro sulla cartella dell'eseguibile
-WORKDIR /src/OrderService/Order.WebApi
+WORKDIR /src/OrderService/OrderService.WebApi
 
 # Compilo l'applicazione
-RUN dotnet build Order.WebApi.csproj -c Release -o /app/build
+RUN dotnet build OrderService.WebApi.csproj -c Release -o /app/build
 
 # ==========================================
 # Fase 3: Pubblicazione
 # ==========================================
 FROM build AS publish
-RUN dotnet publish Order.WebApi.csproj -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish OrderService.WebApi.csproj -c Release -o /app/publish /p:UseAppHost=false
 
 # ==========================================
 # Fase 4: Immagine finale

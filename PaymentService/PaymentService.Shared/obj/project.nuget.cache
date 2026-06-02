@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "D7Esvq1cVPM=",
+  "dgSpecHash": "Bn/2EpvHuQw=",
   "success": true,
-  "projectFilePath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj",
+  "expectedPackageFiles": [
+    "/Users/federicobecchi/.nuget/packages/microsoft.netcore.app.ref/8.0.23/microsoft.netcore.app.ref.8.0.23.nupkg.sha512",
+    "/Users/federicobecchi/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.23/microsoft.aspnetcore.app.ref.8.0.23.nupkg.sha512"
+  ],
   "logs": []
 }
