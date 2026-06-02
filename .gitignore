@@ -2,3 +2,4 @@
 nuget.config
 **/bin/*
 **/obj/*
+*.env
