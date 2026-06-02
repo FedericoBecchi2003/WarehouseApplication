@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "PaymentService.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/PaymentService.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentService.Shared.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "PaymentService.Shared/1.0.0": {
+      "type": "project",
+      "path": "../PaymentService.Shared/PaymentService.Shared.csproj",
+      "msbuildProject": "../PaymentService.Shared/PaymentService.Shared.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "PaymentService.Shared >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/federicobecchi/.nuget/packages/": {}
@@ -13,25 +32,31 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj",
+      "projectUniqueName": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj",
       "projectName": "PaymentService.ClientHttp",
-      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj",
+      "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj",
       "packagesPath": "/Users/federicobecchi/.nuget/packages/",
-      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.ClientHttp/obj/",
+      "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.ClientHttp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
         "/Users/federicobecchi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/IL_TUO_USERNAME_GITHUB/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/PaymentService/PaymentService.Shared/PaymentService.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,63 +1,100 @@
 version: '3.8'
 
 services:
-  # DATABASE PER ORDINI
-  # MICROSERVIZIO ORDINI
+  # --- 1. ORDER SERVICE & DB ---
+  order-db:
+    image: postgres:15-alpine
+    container_name: order-postgres
+    environment:
+      POSTGRES_USER: ecommerce_user
+      POSTGRES_PASSWORD: SecurePassword123!
+      POSTGRES_DB: order_db
+    ports:
+      - "5431:5432"
+    volumes:
+      - order_db_data:/var/lib/postgresql/data
+
   order-api:
-    image: ghcr.io/TUO_USERNAME_GITHUB/order-api:latest
-    container_name: order-api
+    container_name: order-service
+    image: ${DOCKERHUB_USERNAME}/warehouse-order-service:${ORDER_SERVICE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: OrderService/Dockerfile
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
     ports:
       - "5001:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      # Sovrascriviamo le stringhe di connessione per puntare ai container, non a localhost
       - ConnectionStrings__DefaultConnection=Host=order-db;Database=order_db;Username=ecommerce_user;Password=SecurePassword123!
       - Kafka__BootstrapServers=kafka:29092
     depends_on:
       - order-db
       - kafka
 
-  # MICROSERVIZIO MAGAZZINO
-  inventory-api:
-    image: ghcr.io/TUO_USERNAME_GITHUB/inventory-api:latest
-    container_name: inventory-api
+  # --- 2. WAREHOUSE SERVICE & DB ---
+  warehouse-db:
+    image: postgres:15-alpine
+    container_name: warehouse-postgres
+    environment:
+      POSTGRES_USER: ecommerce_user
+      POSTGRES_PASSWORD: SecurePassword123!
+      POSTGRES_DB: warehouse_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - warehouse_db_data:/var/lib/postgresql/data
+
+  warehouse-api:
+    container_name: warehouse-service
+    image: ${DOCKERHUB_USERNAME}/warehouse-warehouse-service:${WAREHOUSE_SERVICE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: WarehouseService/Dockerfile
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
     ports:
       - "5002:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ConnectionStrings__DefaultConnection=Host=inventory-db;Database=inventory_db;Username=ecommerce_user;Password=SecurePassword123!
+      - ConnectionStrings__DefaultConnection=Host=warehouse-db;Database=warehouse_db;Username=ecommerce_user;Password=SecurePassword123!
       - Kafka__BootstrapServers=kafka:29092
     depends_on:
-      - inventory-db
+      - warehouse-db
       - kafka
 
-  # DATABASE PER MAGAZZINO
-  inventory-db:
+  # --- 3. PAYMENT SERVICE & DB ---
+  payment-db:
     image: postgres:15-alpine
-    container_name: inventory-postgres
+    container_name: payment-postgres
     environment:
       POSTGRES_USER: ecommerce_user
       POSTGRES_PASSWORD: SecurePassword123!
-      POSTGRES_DB: inventory_db
-    ports:
-      - "5432:5432"
-    volumes:
-      - inventory_db_data:/var/lib/postgresql/data
-
-  # DATABASE PER NOTIFICHE/TERZO SERVIZIO
-  notification-db:
-    image: postgres:15-alpine
-    container_name: notification-postgres
-    environment:
-      POSTGRES_USER: ecommerce_user
-      POSTGRES_PASSWORD: SecurePassword123!
-      POSTGRES_DB: notification_db
+      POSTGRES_DB: payment_db
     ports:
       - "5433:5432"
     volumes:
-      - notification_db_data:/var/lib/postgresql/data
+      - payment_db_data:/var/lib/postgresql/data
 
-  # KAFKA (Modalità KRaft - No Zookeeper)
+  payment-api:
+    container_name: payment-service
+    image: ${DOCKERHUB_USERNAME}/warehouse-payment-service:${PAYMENT_SERVICE_TAG:-latest}
+    build:
+      context: .
+      dockerfile: PaymentService/Dockerfile
+      args:
+        - GITHUB_TOKEN=${GITHUB_TOKEN}
+    ports:
+      - "5003:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ConnectionStrings__DefaultConnection=Host=payment-db;Database=payment_db;Username=ecommerce_user;Password=SecurePassword123!
+      - Kafka__BootstrapServers=kafka:29092
+    depends_on:
+      - payment-db
+      - kafka
+
+  # --- 4. MESSAGE BROKER (KAFKA KRaft) ---
   kafka:
     image: confluentinc/cp-kafka:7.4.0
     container_name: ecommerce-kafka
@@ -81,5 +118,5 @@ services:
 
 volumes:
   order_db_data:
-  inventory_db_data:
-  notification_db_data:
+  warehouse_db_data:
+  payment_db_data:

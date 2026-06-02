@@ -16,29 +16,29 @@ WORKDIR /src
 COPY ["nuget.config", "."]
 
 # Copio solo i file di progetto per sfruttare la cache di Docker
-COPY ["OrderService/Order.WebApi/Order.WebApi.csproj", "OrderService/Order.WebApi/"]
-COPY ["OrderService/Order.Business/Order.Business.csproj", "OrderService/Order.Business/"]
-COPY ["OrderService/Order.Repository/Order.Repository.csproj", "OrderService/Order.Repository/"]
-COPY ["OrderService/Order.Shared/Order.Shared.csproj", "OrderService/Order.Shared/"]
-COPY ["OrderService/Order.ClientHttp/Order.ClientHttp.csproj", "OrderService/Order.ClientHttp/"]
+COPY ["PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj", "PaymentService/PaymentService.WebApi/"]
+COPY ["PaymentService/PaymentService.Business/PaymentService.Business.csproj", "PaymentService/PaymentService.Business/"]
+COPY ["PaymentService/PaymentService.Repository/PaymentService.Repository.csproj", "PaymentService/PaymentService.Repository/"]
+COPY ["PaymentService/PaymentService.Shared/PaymentService.Shared.csproj", "PaymentService/PaymentService.Shared/"]
+COPY ["PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj", "PaymentService/PaymentService.ClientHttp/"]
 
 # Eseguo il restore (scaricherà i pacchetti da NuGet.org e da GitHub)
-RUN dotnet restore "OrderService/Order.WebApi/Order.WebApi.csproj"
+RUN dotnet restore "PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj"
 
-# Copio tutto il resto del codice sorgente di OrderService
-COPY ["OrderService/", "OrderService/"]
-WORKDIR "/src/OrderService/Order.WebApi"
+# Copio tutto il resto del codice sorgente di PaymentService
+COPY ["PaymentService/", "PaymentService/"]
+WORKDIR "/src/PaymentService/PaymentService.WebApi"
 
 # Compilo
-RUN dotnet build "Order.WebApi.csproj" -c Release -o /app/build
+RUN dotnet build "PaymentService.WebApi.csproj" -c Release -o /app/build
 
 # Fase 3: Pubblicazione
 FROM build AS publish
-RUN dotnet publish "Order.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "PaymentService.WebApi.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Fase 4: Immagine finale
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 # Punto di ingresso dell'applicazione
-ENTRYPOINT ["dotnet", "Order.WebApi.dll"]
+ENTRYPOINT ["dotnet", "PaymentService.WebApi.dll"]

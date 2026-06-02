@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "WarehouseService.Repository/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "WarehouseService.Shared": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WarehouseService.Repository.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WarehouseService.Repository.dll": {}
+        }
+      },
+      "WarehouseService.Shared/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/WarehouseService.Shared.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WarehouseService.Shared.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "WarehouseService.Repository/1.0.0": {
+      "type": "project",
+      "path": "../WarehouseService.Repository/WarehouseService.Repository.csproj",
+      "msbuildProject": "../WarehouseService.Repository/WarehouseService.Repository.csproj"
+    },
+    "WarehouseService.Shared/1.0.0": {
+      "type": "project",
+      "path": "../WarehouseService.Shared/WarehouseService.Shared.csproj",
+      "msbuildProject": "../WarehouseService.Shared/WarehouseService.Shared.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "WarehouseService.Repository >= 1.0.0",
+      "WarehouseService.Shared >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "/Users/federicobecchi/.nuget/packages/": {}
@@ -20,18 +58,27 @@
       "outputPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/WarehouseService/WarehouseService.Business/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
+        "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/NuGet.Config",
         "/Users/federicobecchi/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nuget.pkg.github.com/IL_TUO_USERNAME_GITHUB/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/WarehouseService/WarehouseService.Repository/WarehouseService.Repository.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/WarehouseService/WarehouseService.Repository/WarehouseService.Repository.csproj"
+            },
+            "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/WarehouseService/WarehouseService.Shared/WarehouseService.Shared.csproj": {
+              "projectPath": "/Users/federicobecchi/Library/CloudStorage/OneDrive-UniversitàdegliStudidiParma/Uni/Informatica/2025_2026/Microservizi/WarehouseApplication/WarehouseService/WarehouseService.Shared/WarehouseService.Shared.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
