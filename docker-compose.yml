@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  # --- 1. ORDER SERVICE & DB ---
+  # --- ORDER SERVICE ---
   order-db:
     image: postgres:15-alpine
     container_name: order-postgres
@@ -16,13 +16,7 @@ services:
 
   order-api:
     container_name: order-service
-    image: ${DOCKERHUB_USERNAME}/warehouse-order-service:${ORDER_SERVICE_TAG:-latest}
-    build:
-      context: .
-      dockerfile: OrderService/Dockerfile
-      args:
-        - NUGET_USERNAME=${GITHUB_USER}
-        - NUGET_PASSWORD=${GITHUB_TOKEN}
+    image: federicobecchi2003/warehouse-order-service:latest
     ports:
       - "5001:8080"
     environment:
@@ -33,7 +27,7 @@ services:
       - order-db
       - kafka
 
-  # --- 2. WAREHOUSE SERVICE & DB ---
+  # --- WAREHOUSE SERVICE ---
   warehouse-db:
     image: postgres:15-alpine
     container_name: warehouse-postgres
@@ -48,13 +42,7 @@ services:
 
   warehouse-api:
     container_name: warehouse-service
-    image: ${DOCKERHUB_USERNAME}/warehouse-warehouse-service:${WAREHOUSE_SERVICE_TAG:-latest}
-    build:
-      context: .
-      dockerfile: WarehouseService/Dockerfile
-      args:
-        - NUGET_USERNAME=${GITHUB_USER}
-        - NUGET_PASSWORD=${GITHUB_TOKEN}
+    image: federicobecchi2003/warehouse-warehouse-service:latest
     ports:
       - "5002:8080"
     environment:
@@ -65,7 +53,7 @@ services:
       - warehouse-db
       - kafka
 
-  # --- 3. PAYMENT SERVICE & DB ---
+  # --- PAYMENT SERVICE ---
   payment-db:
     image: postgres:15-alpine
     container_name: payment-postgres
@@ -80,13 +68,7 @@ services:
 
   payment-api:
     container_name: payment-service
-    image: ${DOCKERHUB_USERNAME}/warehouse-payment-service:${PAYMENT_SERVICE_TAG:-latest}
-    build:
-      context: .
-      dockerfile: PaymentService/Dockerfile
-      args:
-        - NUGET_USERNAME=${GITHUB_USER}
-        - NUGET_PASSWORD=${GITHUB_TOKEN}
+    image: federicobecchi2003/warehouse-payment-service:latest
     ports:
       - "5003:8080"
     environment:
@@ -97,7 +79,7 @@ services:
       - payment-db
       - kafka
 
-  # --- 4. MESSAGE BROKER (KAFKA KRaft) ---
+  # --- KAFKA (KRaft) ---
   kafka:
     image: confluentinc/cp-kafka:7.4.0
     container_name: ecommerce-kafka
