@@ -3,3 +3,4 @@ nuget.config
 **/bin/*
 **/obj/*
 *.env
+.DS_Store
