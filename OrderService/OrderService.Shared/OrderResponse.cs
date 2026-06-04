@@ -1,15 +1,11 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace OrderService.Shared;
 
-public class OrderRequest
+public class OrderResponse
 {
-    [Required]
+    public Guid Id { get; set; }
     public string ProductId { get; set; } = string.Empty;
-
-    [Range(1, int.MaxValue)]
     public int Quantity { get; set; }
-
-    [Required]
     public string UserId { get; set; } = string.Empty;
+    public string Status { get; set; } = string.Empty;
+    public DateTime CreatedAt { get; set; }
 }
