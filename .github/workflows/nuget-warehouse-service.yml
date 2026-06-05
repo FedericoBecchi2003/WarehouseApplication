@@ -41,4 +41,4 @@ jobs:
           dotnet nuget push "*/bin/Release/*.nupkg" \
             --source "https://nuget.pkg.github.com/FedericoBecchi2003/index.json" \
             --skip-duplicate \
-            --api-key ${{ secrets.GIT_TOKEN }}
+            --api-key ${{ secrets.GITHUB_TOKEN }}
