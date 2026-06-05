@@ -19,7 +19,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<OrderDbContext>();
-    context.Database.Migrate();
+    context.Database.EnsureCreated();
 }
 
 app.UseSwagger();
