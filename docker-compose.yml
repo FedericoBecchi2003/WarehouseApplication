@@ -16,7 +16,7 @@ services:
 
   order-api:
     container_name: order-service
-    image: federicobecchi2003/warehouse-order-service:latest
+    image: ghcr.io/federicobecchi2003/warehouseapplication_order-service:latest
     ports:
       - "5001:8080"
     environment:
@@ -42,7 +42,7 @@ services:
 
   warehouse-api:
     container_name: warehouse-service
-    image: federicobecchi2003/warehouse-warehouse-service:latest
+    image: ghcr.io/federicobecchi2003/warehouseapplication_warehouse-service:latest
     ports:
       - "5002:8080"
     environment:
@@ -68,7 +68,7 @@ services:
 
   payment-api:
     container_name: payment-service
-    image: federicobecchi2003/warehouse-payment-service:latest
+    image: ghcr.io/federicobecchi2003/warehouseapplication_payment-service:latest
     ports:
       - "5003:8080"
     environment:
