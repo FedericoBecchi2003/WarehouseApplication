@@ -1,7 +1,6 @@
 .idea/*
-nuget.config
 **/bin/*
 **/obj/*
-.DS_Store
 *.env
+.DS_Store
 .claude/*
