@@ -1,7 +1,10 @@
+using PaymentService.Shared;
+
 namespace PaymentService.Business;
 
 public interface IPaymentService
 {
-    Task<bool> ProcessPaymentAsync(string orderId, decimal amount);
-    Task<bool> RefundAsync(string orderId, decimal amount);
+    Task<Guid> ProcessPaymentAsync(PaymentRequest request);
+    Task<PaymentResponse?> GetPaymentByIdAsync(Guid paymentId);
+    Task<bool> RefundAsync(Guid paymentId);
 }

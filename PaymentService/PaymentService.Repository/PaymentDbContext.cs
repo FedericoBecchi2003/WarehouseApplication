@@ -8,8 +8,11 @@ public class PaymentDbContext : DbContext
     {
     }
 
+    public DbSet<PaymentEntity> Payments { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+        modelBuilder.Entity<PaymentEntity>().HasKey(p => p.Id);
     }
 }
