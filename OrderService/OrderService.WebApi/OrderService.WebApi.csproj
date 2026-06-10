@@ -12,6 +12,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="**\*.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OrderService.Business\OrderService.Business.csproj" />
     <ProjectReference Include="..\OrderService.Repository\OrderService.Repository.csproj" />
     <ProjectReference Include="..\OrderService.Shared\OrderService.Shared.csproj" />
