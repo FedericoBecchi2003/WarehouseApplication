@@ -2,6 +2,7 @@
 name: NuGet-OrderService
 on:
   push:
+    tags: [ "v*" ]
   workflow_dispatch:
 jobs:
   publish_nuget:

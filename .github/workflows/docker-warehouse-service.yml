@@ -2,6 +2,7 @@
 name: Docker-WarehouseService
 on:
   push:
+    tags: [ "v*" ]
   workflow_dispatch:
 env:
   REGISTRY: ghcr.io
