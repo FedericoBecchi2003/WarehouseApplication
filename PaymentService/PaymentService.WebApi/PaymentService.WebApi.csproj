@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <IsPackable>false</IsPackable>
+    <EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +17,10 @@
     <ProjectReference Include="..\PaymentService.Business\PaymentService.Business.csproj" />
     <ProjectReference Include="..\PaymentService.Repository\PaymentService.Repository.csproj" />
     <ProjectReference Include="..\PaymentService.Shared\PaymentService.Shared.csproj" />
+  </ItemGroup>
+
+    <ItemGroup>
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

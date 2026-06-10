@@ -13,6 +13,8 @@ jobs:
     permissions:
       contents: read
       packages: write
+    env:
+      NUGET_TOKEN: ${{ secrets.NUGET_TOKEN }}
     steps:
       - uses: actions/checkout@v4
 

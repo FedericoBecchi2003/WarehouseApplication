@@ -3,15 +3,17 @@ WORKDIR /app
 EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
+ARG NUGET_TOKEN
 WORKDIR /src
 
+COPY WarehouseService/NuGet.Config WarehouseService/
 COPY WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj WarehouseService/WarehouseService.WebApi/
 COPY WarehouseService/WarehouseService.Business/WarehouseService.Business.csproj WarehouseService/WarehouseService.Business/
 COPY WarehouseService/WarehouseService.Repository/WarehouseService.Repository.csproj WarehouseService/WarehouseService.Repository/
 COPY WarehouseService/WarehouseService.Shared/WarehouseService.Shared.csproj WarehouseService/WarehouseService.Shared/
 COPY WarehouseService/WarehouseService.ClientHttp/WarehouseService.ClientHttp.csproj WarehouseService/WarehouseService.ClientHttp/
 
-RUN dotnet restore WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj
+RUN NUGET_TOKEN=${NUGET_TOKEN} dotnet restore WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj
 
 COPY WarehouseService/ WarehouseService/
 

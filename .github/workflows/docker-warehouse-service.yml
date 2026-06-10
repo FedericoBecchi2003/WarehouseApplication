@@ -44,5 +44,6 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          build-args: NUGET_TOKEN=${{ secrets.NUGET_TOKEN }}
           cache-from: type=gha,scope=warehouse-service
           cache-to: type=gha,scope=warehouse-service,mode=max

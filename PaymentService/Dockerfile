@@ -3,15 +3,17 @@ WORKDIR /app
 EXPOSE 8080
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
+ARG NUGET_TOKEN
 WORKDIR /src
 
+COPY PaymentService/NuGet.Config PaymentService/
 COPY PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj PaymentService/PaymentService.WebApi/
 COPY PaymentService/PaymentService.Business/PaymentService.Business.csproj PaymentService/PaymentService.Business/
 COPY PaymentService/PaymentService.Repository/PaymentService.Repository.csproj PaymentService/PaymentService.Repository/
 COPY PaymentService/PaymentService.Shared/PaymentService.Shared.csproj PaymentService/PaymentService.Shared/
 COPY PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj PaymentService/PaymentService.ClientHttp/
 
-RUN dotnet restore PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj
+RUN NUGET_TOKEN=${NUGET_TOKEN} dotnet restore PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj
 
 COPY PaymentService/ PaymentService/
 
