@@ -6,14 +6,20 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
 ARG NUGET_TOKEN
 WORKDIR /src
 
-COPY PaymentService/NuGet.Config PaymentService/
 COPY PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj PaymentService/PaymentService.WebApi/
 COPY PaymentService/PaymentService.Business/PaymentService.Business.csproj PaymentService/PaymentService.Business/
 COPY PaymentService/PaymentService.Repository/PaymentService.Repository.csproj PaymentService/PaymentService.Repository/
 COPY PaymentService/PaymentService.Shared/PaymentService.Shared.csproj PaymentService/PaymentService.Shared/
 COPY PaymentService/PaymentService.ClientHttp/PaymentService.ClientHttp.csproj PaymentService/PaymentService.ClientHttp/
 
-RUN NUGET_TOKEN=${NUGET_TOKEN} dotnet restore PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj
+RUN if [ -n "${NUGET_TOKEN}" ]; then \
+        dotnet nuget add source "https://nuget.pkg.github.com/FedericoBecchi2003/index.json" \
+            --name FedericoBecchi2003 \
+            --username FedericoBecchi2003 \
+            --password "${NUGET_TOKEN}" \
+            --store-password-in-clear-text; \
+    fi && \
+    dotnet restore PaymentService/PaymentService.WebApi/PaymentService.WebApi.csproj
 
 COPY PaymentService/ PaymentService/
 

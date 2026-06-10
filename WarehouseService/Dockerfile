@@ -6,14 +6,20 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0-alpine AS build
 ARG NUGET_TOKEN
 WORKDIR /src
 
-COPY WarehouseService/NuGet.Config WarehouseService/
 COPY WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj WarehouseService/WarehouseService.WebApi/
 COPY WarehouseService/WarehouseService.Business/WarehouseService.Business.csproj WarehouseService/WarehouseService.Business/
 COPY WarehouseService/WarehouseService.Repository/WarehouseService.Repository.csproj WarehouseService/WarehouseService.Repository/
 COPY WarehouseService/WarehouseService.Shared/WarehouseService.Shared.csproj WarehouseService/WarehouseService.Shared/
 COPY WarehouseService/WarehouseService.ClientHttp/WarehouseService.ClientHttp.csproj WarehouseService/WarehouseService.ClientHttp/
 
-RUN NUGET_TOKEN=${NUGET_TOKEN} dotnet restore WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj
+RUN if [ -n "${NUGET_TOKEN}" ]; then \
+        dotnet nuget add source "https://nuget.pkg.github.com/FedericoBecchi2003/index.json" \
+            --name FedericoBecchi2003 \
+            --username FedericoBecchi2003 \
+            --password "${NUGET_TOKEN}" \
+            --store-password-in-clear-text; \
+    fi && \
+    dotnet restore WarehouseService/WarehouseService.WebApi/WarehouseService.WebApi.csproj
 
 COPY WarehouseService/ WarehouseService/
 
